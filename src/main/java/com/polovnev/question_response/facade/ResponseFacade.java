@@ -16,7 +16,7 @@ public class ResponseFacade {
     @Autowired
     private ResponseService responseService;
 
-    public void addResponse(ResponseDto responseDto) {
+    public void addResponse(Long questionId, ResponseDto responseDto) {
         Response response = responseConverter.dtoToEntity(responseDto);
         responseService.createResponse(response);
     }
