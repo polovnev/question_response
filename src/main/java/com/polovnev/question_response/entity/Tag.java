@@ -17,4 +17,7 @@ public class Tag {
     @Column(name = "text")
     private String text;
 
+    @Column(name = "color")
+    private String color;
+
 }
