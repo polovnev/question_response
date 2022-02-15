@@ -23,7 +23,5 @@ public class Response {
     @Column(name = "is_response")
     private Boolean isResponse;
 
-    @Column(name = "id")
-    private Question question;
 
 }
