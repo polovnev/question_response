@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface QuestionService {
 
-    void createQuestion(Question question);
-
-    void updateQuestion(Question question);
-
     Question getQuestion(Long id);
 
     List<Question> findQuestionByRequest(SearchRequest searchRequest);
+
+    void createQuestion(Question question);
+
+    void updateQuestion(Question question);
 
     void removeQuestion(Long id);
 }
