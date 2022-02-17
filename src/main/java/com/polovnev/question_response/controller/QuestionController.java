@@ -20,7 +20,7 @@ public class QuestionController {
         return questionFacade.getQuestion(id);
     }
 
-    @GetMapping
+    @PostMapping("/find")
     public List<QuestionDto> findQuestionByRequest(@RequestBody SearchRequest searchRequest) {
         return questionFacade.findQuestionByRequest(searchRequest);
     }

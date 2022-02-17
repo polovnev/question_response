@@ -20,9 +20,10 @@ public class QuestionServiceImpl implements QuestionService {
         return questionRepository.findById(id).get();
     }
 
+    //TODO: implement search by location, tags and text
     @Override
     public List<Question> findQuestionsByRequest(SearchRequest searchRequest) {
-        return null;
+        return questionRepository.findByLocation(searchRequest.getLocationId());
     }
 
     @Override
