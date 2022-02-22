@@ -25,7 +25,7 @@ import java.util.List;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @DirtiesContext
 @AutoConfigureMessageVerifier
-public class BaseTest {
+public abstract class BaseTest {
 
     @Autowired
     private QuestionController questionController;
@@ -46,7 +46,7 @@ public class BaseTest {
                 .author(1L).location(1L).isResponded(true).createdDate(LocalDate.MIN).build();
         Question questionTwo = Question.builder().id(2L).text("Second question?")
                 .author(1L).location(1L).isResponded(false).createdDate(LocalDate.MIN).build();
-        List<Question> questions = Arrays.asList(questionOne,questionTwo);
+        List<Question> questions = Arrays.asList(questionOne, questionTwo);
         Mockito.when(questionRepository.findByLocation(1L)).thenReturn(questions);
     }
 }

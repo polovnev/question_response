@@ -79,7 +79,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<baseClassForTests>
-						com.polovnev.location.springcloudcontractproducer.BaseTest
+						com.polovnev.question_response.springcloudcontractproducer.BaseTest
 					</baseClassForTests>
 				</configuration>
 			</plugin>
