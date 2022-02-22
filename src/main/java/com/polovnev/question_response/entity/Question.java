@@ -1,5 +1,6 @@
 package com.polovnev.question_response.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "question")
+@Builder
 @Data
 public class Question {
 
