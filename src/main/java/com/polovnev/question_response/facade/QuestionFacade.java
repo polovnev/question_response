@@ -3,6 +3,7 @@ package com.polovnev.question_response.facade;
 import com.polovnev.question_response.converter.QuestionConverter;
 import com.polovnev.question_response.dto.QuestionDto;
 import com.polovnev.question_response.dto.SearchRequest;
+import com.polovnev.question_response.entity.Question;
 import com.polovnev.question_response.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,8 @@ public class QuestionFacade {
     private QuestionConverter questionConverter;
 
     public QuestionDto getQuestion(Long id) {
-        return null;
+        Question question = questionService.getQuestion(id);
+        return questionConverter.entityToDto(question);
     }
 
     public List<QuestionDto> findQuestionByRequest(SearchRequest searchRequest) {
