@@ -20,7 +20,7 @@ public class QuestionController {
         return questionFacade.getQuestion(id);
     }
 
-    @PostMapping("/find")
+    @PostMapping(value = "/find", produces="application/json")
     public List<QuestionDto> findQuestionByRequest(@RequestBody SearchRequest searchRequest) {
         return questionFacade.findQuestionByRequest(searchRequest);
     }
