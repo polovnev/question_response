@@ -4,6 +4,7 @@ import com.polovnev.question_response.dto.QuestionDto;
 import com.polovnev.question_response.dto.SearchRequest;
 import com.polovnev.question_response.facade.QuestionFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class QuestionController {
         return questionFacade.getQuestion(id);
     }
 
-    @PostMapping(value = "/find", produces="application/json")
+    @PostMapping(value = "/find", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<QuestionDto> findQuestionByRequest(@RequestBody SearchRequest searchRequest) {
         return questionFacade.findQuestionByRequest(searchRequest);
     }
