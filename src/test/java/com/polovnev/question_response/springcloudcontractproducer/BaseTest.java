@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
@@ -48,5 +49,6 @@ public abstract class BaseTest {
                 .author(1L).location(1L).isResponded(false).createdDate(LocalDate.MIN).build();
         List<Question> questions = Arrays.asList(questionOne, questionTwo);
         Mockito.when(questionRepository.findByLocation(1L)).thenReturn(questions);
+        Mockito.when(questionRepository.findById(1L)).thenReturn(Optional.of(questionOne));
     }
 }

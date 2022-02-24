@@ -16,7 +16,7 @@ public class QuestionController {
     @Autowired
     private QuestionFacade questionFacade;
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public QuestionDto getQuestion(@PathVariable Long id) {
         return questionFacade.getQuestion(id);
     }
