@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "4c129cbf-aab4-403d-9b06-5fefa6e0459d",
+		"name": "question_response",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "questions search request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"locationId\": 1\n}"
+				},
+				"url": {
+					"raw": "{{url}}/question/find",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"question",
+						"find"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get question by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"locationId\": 1\n}"
+				},
+				"url": {
+					"raw": "{{url}}/question/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"question",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+}
