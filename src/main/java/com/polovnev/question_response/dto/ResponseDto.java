@@ -6,5 +6,8 @@ import lombok.Data;
 public class ResponseDto {
 
     private Long responseId;
-    private Long questionId;
+    private String text;
+    private Long author;
+    private Boolean isResponse;
+
 }

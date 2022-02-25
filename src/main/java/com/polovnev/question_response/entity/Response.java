@@ -23,5 +23,8 @@ public class Response {
     @Column(name = "is_response")
     private Boolean isResponse;
 
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
 
 }

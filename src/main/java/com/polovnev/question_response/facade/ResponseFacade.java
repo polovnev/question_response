@@ -7,6 +7,10 @@ import com.polovnev.question_response.service.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+
 @Component
 public class ResponseFacade {
 
@@ -19,5 +23,10 @@ public class ResponseFacade {
     public void addResponse(Long questionId, ResponseDto responseDto) {
         Response response = responseConverter.dtoToEntity(responseDto);
         responseService.createResponse(response);
+    }
+
+    public List<ResponseDto> findResponsesByQuestionId(Long questionId) {
+        return responseService.findResponsesForQuestion(questionId)
+                .stream().map(responseConverter::entityToDto).collect(toList());
     }
 }

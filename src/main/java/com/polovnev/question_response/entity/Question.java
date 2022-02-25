@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "question")
@@ -35,4 +36,7 @@ public class Question {
 
     @Column(name = "created_date")
     private LocalDate createdDate;
+
+    @OneToMany(mappedBy="question")
+    private Set<Response> responses;
 }

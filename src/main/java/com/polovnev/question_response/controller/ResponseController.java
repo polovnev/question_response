@@ -6,6 +6,8 @@ import com.polovnev.question_response.facade.ResponseFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/question/{questionId}/response")
 public class ResponseController {
@@ -16,5 +18,10 @@ public class ResponseController {
     @PostMapping
     public void addResponse(@PathVariable Long questionId, @RequestBody ResponseDto responseDto) {
         responseFacade.addResponse(questionId, responseDto);
+    }
+
+    @GetMapping
+    public List<ResponseDto> findResponsesByQuestionId(@PathVariable Long questionId) {
+        return responseFacade.findResponsesByQuestionId(questionId);
     }
 }

@@ -26,6 +26,6 @@ public class ResponseServiceImpl implements ResponseService {
 
     @Override
     public List<Response> findResponsesForQuestion(Long questionId) {
-        return null;
+        return responseRepository.findByQuestion_Id(questionId);
     }
 }
