@@ -4,6 +4,7 @@ package com.polovnev.question_response.controller;
 import com.polovnev.question_response.dto.ResponseDto;
 import com.polovnev.question_response.facade.ResponseFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +21,8 @@ public class ResponseController {
         responseFacade.addResponse(questionId, responseDto);
     }
 
-    @GetMapping
-    public List<ResponseDto> findResponsesByQuestionId(@PathVariable Long questionId) {
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ResponseDto> findResponsesByQuestionId(@PathVariable(name = "questionId") Long questionId) {
         return responseFacade.findResponsesByQuestionId(questionId);
     }
 }
