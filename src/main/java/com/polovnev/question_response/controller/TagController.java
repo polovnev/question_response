@@ -31,7 +31,7 @@ public class TagController {
 
     @GetMapping
     public List<TagDto> getAllTags() {
-        return null;
+        return tagFacade.getAllTags();
     }
 
     public void addTagsForQuestion(Long questionId, List<Long> tagIds) {

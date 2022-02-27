@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class TagFacade {
@@ -30,7 +31,7 @@ public class TagFacade {
     }
 
     public List<TagDto> getAllTags() {
-        return null;
+        return tagService.getAllTags().stream().map(tagConverter::entityToDto).collect(Collectors.toList());
     }
 
     public void addTagsForQuestion(Long questionId, List<Long> tagIds) {
