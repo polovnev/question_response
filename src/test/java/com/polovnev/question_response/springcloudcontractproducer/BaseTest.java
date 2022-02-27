@@ -3,10 +3,13 @@ package com.polovnev.question_response.springcloudcontractproducer;
 
 import com.polovnev.question_response.controller.QuestionController;
 import com.polovnev.question_response.controller.ResponseController;
+import com.polovnev.question_response.controller.TagController;
 import com.polovnev.question_response.dao.QuestionRepository;
 import com.polovnev.question_response.dao.ResponseRepository;
+import com.polovnev.question_response.dao.TagRepository;
 import com.polovnev.question_response.entity.Question;
 import com.polovnev.question_response.entity.Response;
+import com.polovnev.question_response.entity.Tag;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,23 +40,30 @@ public abstract class BaseTest {
     @Autowired
     private ResponseController responseController;
 
+    @Autowired
+    private TagController tagController;
+
     @MockBean
     private QuestionRepository questionRepository;
 
     @MockBean
     private ResponseRepository responseRepository;
 
+    @MockBean
+    private TagRepository tagRepository;
+
     @BeforeEach
     public void setup() {
         setupDbInteraction();
         StandaloneMockMvcBuilder standaloneMockMvcBuilder
-                = MockMvcBuilders.standaloneSetup(questionController, responseController);
+                = MockMvcBuilders.standaloneSetup(questionController, responseController, tagController);
         RestAssuredMockMvc.standaloneSetup(standaloneMockMvcBuilder);
     }
 
     private void setupDbInteraction() {
         setupDbInteractionForQuestions();
         setupDbInteractionForResponses();
+        setupDbInteractionForTags();
     }
 
     private void setupDbInteractionForQuestions() {
@@ -75,6 +85,14 @@ public abstract class BaseTest {
         List<Response> responses = Arrays.asList(responseOne, responseTwo);
 
         Mockito.when(responseRepository.findByQuestion_Id(1L)).thenReturn(responses);
+    }
 
+    private void setupDbInteractionForTags() {
+        Tag tagOne = Tag.builder().id(1L).text("Документы").color("#FFF8DC").build();
+        Tag tagTwo = Tag.builder().id(2L).text("Еда").color("#7FFF00").build();
+
+        List<Tag> tags = Arrays.asList(tagOne, tagTwo);
+
+        Mockito.when(tagRepository.findAll()).thenReturn(tags);
     }
 }

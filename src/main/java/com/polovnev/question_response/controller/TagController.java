@@ -3,6 +3,7 @@ package com.polovnev.question_response.controller;
 import com.polovnev.question_response.dto.TagDto;
 import com.polovnev.question_response.facade.TagFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class TagController {
         tagFacade.updateTag(tagId, tagDto);
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TagDto> getAllTags() {
         return tagFacade.getAllTags();
     }
