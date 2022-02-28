@@ -1,16 +1,16 @@
 package com.polovnev.question_response.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "question")
+@NamedEntityGraph(name = "question_with_tags_and_responses",
+        attributeNodes = {@NamedAttributeNode("tags"), @NamedAttributeNode("responses")})
 @Builder
 @Data
 @AllArgsConstructor
@@ -38,5 +38,12 @@ public class Question {
     private LocalDate createdDate;
 
     @OneToMany(mappedBy="question")
-    private Set<Response> responses;
+    private List<Response> responses;
+
+    @JoinTable(
+            name = "question_tag",
+            joinColumns = @JoinColumn(name = "question_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    @ManyToMany
+    private Set<Tag> tags;
 }
