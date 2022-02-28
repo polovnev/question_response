@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4c129cbf-aab4-403d-9b06-5fefa6e0459d",
+		"_postman_id": "59d8e1ae-3ef2-44b5-a6f8-93312894eab7",
 		"name": "question_response",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -59,6 +59,68 @@
 					"path": [
 						"question",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get responses by question id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"locationId\": 1\n}"
+				},
+				"url": {
+					"raw": "{{url}}/question/1/response",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"question",
+						"1",
+						"response"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all tags",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"locationId\": 1\n}"
+				},
+				"url": {
+					"raw": "{{url}}/tag",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tag"
 					]
 				}
 			},
