@@ -59,8 +59,8 @@ public class DaoTestConfig {
     public TagRepository tagRepositoryMock() {
         TagRepository tagRepository = Mockito.mock(TagRepository.class);
 
-        Tag tagOne = Tag.builder().id(1L).text("Документы").color("#FFF8DC").build();
-        Tag tagTwo = Tag.builder().id(2L).text("Еда").color("#7FFF00").build();
+        Tag tagOne = Tag.builder().id(1L).text("Documents").color("#FFF8DC").build();
+        Tag tagTwo = Tag.builder().id(2L).text("Food").color("#7FFF00").build();
 
         List<Tag> tags = Arrays.asList(tagOne, tagTwo);
 
