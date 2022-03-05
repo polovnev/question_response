@@ -11,7 +11,7 @@ public interface QuestionService {
 
     List<Question> findQuestionsByRequest(SearchRequest searchRequest);
 
-    void createQuestion(Question question);
+    Question createQuestion(Question question);
 
     void updateQuestion(Question question);
 

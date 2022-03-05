@@ -8,6 +8,7 @@ import com.polovnev.question_response.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,8 +31,12 @@ public class QuestionFacade {
                 .map(questionConverter::entityToDto).collect(Collectors.toList());
     }
 
-    public void createQuestion(QuestionDto questionDto) {
-
+    public QuestionDto createQuestion(QuestionDto questionDto) {
+        Question question = questionConverter.dtoToEntity(questionDto);
+        question.setCreatedDate(LocalDate.now());
+        question.setIsResponded(Boolean.FALSE);
+        Question savedQuestion = questionService.createQuestion(question);
+        return questionConverter.entityToDto(savedQuestion);
     }
 
     public void updateQuestion(Long id, QuestionDto questionDto) {
