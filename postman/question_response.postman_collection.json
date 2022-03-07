@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "59d8e1ae-3ef2-44b5-a6f8-93312894eab7",
+		"_postman_id": "cbdb7270-3fcc-4b19-aeea-b01c9f1af232",
 		"name": "question_response",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -121,6 +121,40 @@
 					],
 					"path": [
 						"tag"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create response",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"YES!\",\n  \"author\": 1\n}"
+				},
+				"url": {
+					"raw": "{{url}}/question/1/response",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"question",
+						"1",
+						"response"
 					]
 				}
 			},

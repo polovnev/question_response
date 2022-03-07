@@ -15,7 +15,7 @@ public class QuestionListener {
     private QuestionFacade questionFacade;
 
     @RabbitListener(queues = "question create")
-    public void receiveMessage(final QuestionDto questionDto) {
+    public void createQuestion(final QuestionDto questionDto) {
         questionFacade.createQuestion(questionDto);
     }
 }

@@ -17,8 +17,8 @@ public class ResponseController {
     private ResponseFacade responseFacade;
 
     @PostMapping
-    public void addResponse(@PathVariable Long questionId, @RequestBody ResponseDto responseDto) {
-        responseFacade.addResponse(questionId, responseDto);
+    public void addResponse(@RequestBody ResponseDto responseDto) {
+        responseFacade.createResponse(responseDto);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

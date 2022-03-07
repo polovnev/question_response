@@ -20,7 +20,8 @@ public class ResponseFacade {
     @Autowired
     private ResponseService responseService;
 
-    public void addResponse(Long questionId, ResponseDto responseDto) {
+    public void createResponse(ResponseDto responseDto) {
+        responseDto.setIsResponse(false);
         Response response = responseConverter.dtoToEntity(responseDto);
         responseService.createResponse(response);
     }
