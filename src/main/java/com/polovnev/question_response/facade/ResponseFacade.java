@@ -36,7 +36,7 @@ public class ResponseFacade {
                 .stream().map(responseConverter::entityToDto).collect(toList());
     }
 
-    public void setIsResponseTrue(final Long responseId, final Long questionId, final Long userId) {
+    public void setIsResponseTrue(final Long responseId, final Long questionId, final String userId) {
         boolean isQuestionAssignedToUser = questionService.isQuestionAssignedToUser(questionId, userId);
         if(isQuestionAssignedToUser) {
             responseService.setIsResponseTrue(responseId, questionId);

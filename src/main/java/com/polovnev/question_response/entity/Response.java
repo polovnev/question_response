@@ -24,7 +24,7 @@ public class Response {
     private String text;
 
     @Column(name = "author")
-    private Long authorId;
+    private String authorId;
 
     @Column(name = "is_response")
     private Boolean isResponse;

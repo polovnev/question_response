@@ -16,7 +16,7 @@ public interface QuestionRepository extends CrudRepository<Question, Long> {
     @EntityGraph(value = "question_with_tags_and_responses")
     Optional<Question> findById(Long id);
 
-    @Query("SELECT CASE WHEN q.authorId = :userId THEN true ELSE false END FROM Question q WHERE q.id = :questionId")
+    @Query("SELECT CASE WHEN q.authorId = :username THEN true ELSE false END FROM Question q WHERE q.id = :questionId")
     boolean isQuestionAssignedToUser(@Param(value = "questionId") Long questionId,
-                                     @Param(value = "userId") Long userId);
+                                     @Param(value = "username") String username);
 }

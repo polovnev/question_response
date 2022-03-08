@@ -42,7 +42,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public boolean isQuestionAssignedToUser(Long questionId, Long userId) {
-        return questionRepository.isQuestionAssignedToUser(questionId, userId);
+    public boolean isQuestionAssignedToUser(Long questionId, String username) {
+        return questionRepository.isQuestionAssignedToUser(questionId, username);
     }
 }

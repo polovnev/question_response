@@ -17,5 +17,5 @@ public interface QuestionService {
 
     void removeQuestion(Long id);
 
-    boolean isQuestionAssignedToUser(Long questionId, Long userId);
+    boolean isQuestionAssignedToUser(Long questionId, String username);
 }

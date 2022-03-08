@@ -25,9 +25,9 @@ public class DaoTestConfig {
         QuestionRepository questionRepository = Mockito.mock(QuestionRepository.class);
 
         Question questionOne = Question.builder().id(1L).text("First question?")
-                .authorId(1L).location(1L).isResponded(true).createdDate(LocalDate.MIN).build();
+                .authorId("1").location(1L).isResponded(true).createdDate(LocalDate.MIN).build();
         Question questionTwo = Question.builder().id(2L).text("Second question?")
-                .authorId(1L).location(1L).isResponded(false).createdDate(LocalDate.MIN).build();
+                .authorId("1").location(1L).isResponded(false).createdDate(LocalDate.MIN).build();
         List<Question> questions = Arrays.asList(questionOne, questionTwo);
 
         Mockito.when(questionRepository.findByLocation(1L)).thenReturn(questions);
@@ -42,16 +42,15 @@ public class DaoTestConfig {
         ResponseRepository responseRepository = Mockito.mock(ResponseRepository.class);
 
         Response responseOne = Response.builder().id(1L).text("First response!")
-                .authorId(1L).isResponse(true).build();
+                .authorId("1").isResponse(true).build();
         Response responseTwo = Response.builder().id(2L).text("Second response!")
-                .authorId(1L).isResponse(true).build();
+                .authorId("1").isResponse(true).build();
         List<Response> responses = Arrays.asList(responseOne, responseTwo);
 
         Mockito.when(responseRepository.findByQuestion_Id(1L)).thenReturn(responses);
 
         return responseRepository;
     }
-
 
 
     @Primary

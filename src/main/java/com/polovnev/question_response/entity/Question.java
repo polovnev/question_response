@@ -26,7 +26,7 @@ public class Question {
     private String text;
 
     @Column(name = "author")
-    private Long authorId;
+    private String authorId;
 
     @Column(name = "location")
     private Long location;
