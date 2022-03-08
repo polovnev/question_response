@@ -30,8 +30,8 @@ public class ResponseController {
     @PutMapping("/{responseId}")
     public void setIsResponseTrue(@PathVariable(name = "responseId") Long responseId,
                                   @PathVariable(name = "questionId") Long questionId,
-                                  @RequestBody QuestionDto questionDto) {
-        responseFacade.setIsResponseTrue(responseId, questionId, questionDto.getAuthorId());
+                                  @RequestBody String username) {
+        responseFacade.setIsResponseTrue(responseId, questionId, username);
     }
 
 }
