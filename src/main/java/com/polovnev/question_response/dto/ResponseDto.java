@@ -7,7 +7,7 @@ public class ResponseDto {
 
     private Long id;
     private String text;
-    private Long author;
+    private Long authorId;
     private Boolean isResponse;
     private QuestionDto question;
 }

@@ -1,8 +1,10 @@
 package com.polovnev.question_response.facade;
 
 import com.polovnev.question_response.converter.ResponseConverter;
+import com.polovnev.question_response.dto.QuestionDto;
 import com.polovnev.question_response.dto.ResponseDto;
 import com.polovnev.question_response.entity.Response;
+import com.polovnev.question_response.service.QuestionService;
 import com.polovnev.question_response.service.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,9 @@ public class ResponseFacade {
     @Autowired
     private ResponseService responseService;
 
+    @Autowired
+    private QuestionService questionService;
+
     public void createResponse(ResponseDto responseDto) {
         responseDto.setIsResponse(false);
         Response response = responseConverter.dtoToEntity(responseDto);
@@ -31,8 +36,11 @@ public class ResponseFacade {
                 .stream().map(responseConverter::entityToDto).collect(toList());
     }
 
-    public void setIsResponseTrue(Long id) {
-        responseService.setIsResponseTrue(id);
+    public void setIsResponseTrue(final Long responseId, final Long questionId, final Long userId) {
+        boolean isQuestionAssignedToUser = questionService.isQuestionAssignedToUser(questionId, userId);
+        if(isQuestionAssignedToUser) {
+            responseService.setIsResponseTrue(responseId, questionId, userId);
+        }
     }
 
 }

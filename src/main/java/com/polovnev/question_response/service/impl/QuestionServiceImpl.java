@@ -40,4 +40,9 @@ public class QuestionServiceImpl implements QuestionService {
     public void removeQuestion(Long id) {
         questionRepository.deleteById(id);
     }
+
+    @Override
+    public boolean isQuestionAssignedToUser(Long questionId, Long userId) {
+        return questionRepository.isQuestionAssignedToUser(questionId, userId);
+    }
 }

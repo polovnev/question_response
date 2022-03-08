@@ -8,7 +8,7 @@ Contract.make {
     }
     response {
         status 200
-        body("[{\"responseId\":1,\"text\":\"First response!\",\"author\":1,\"isResponse\":true},{\"responseId\":2,\"text\":\"Second response!\",\"author\":1,\"isResponse\":true}]")
+        body("[{\"id\":1,\"text\":\"First response!\",\"authorId\":1,\"isResponse\":true},{\"id\":2,\"text\":\"Second response!\",\"authorId\":1,\"isResponse\":true}]")
         headers {
             contentType applicationJson()
         }

@@ -16,4 +16,6 @@ public interface QuestionService {
     void updateQuestion(Question question);
 
     void removeQuestion(Long id);
+
+    boolean isQuestionAssignedToUser(Long questionId, Long userId);
 }

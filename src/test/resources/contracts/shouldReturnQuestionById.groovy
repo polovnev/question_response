@@ -8,7 +8,7 @@ Contract.make {
     }
     response {
         status 200
-        body("{\"id\":1,\"ratePoints\":null,\"text\":\"First question?\",\"author\":1," +
+        body("{\"id\":1,\"ratePoints\":null,\"text\":\"First question?\",\"authorId\":1," +
                 "\"location\":1,\"isResponded\":true,\"createdDate\":[-999999999,1,1]}")
         headers {
             contentType applicationJson()

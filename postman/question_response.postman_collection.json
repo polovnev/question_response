@@ -144,7 +144,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"text\": \"YES!\",\n  \"author\": 1\n}"
+					"raw": "{\n  \"text\": \"YES!\",\n  \"authorId\": 1\n}"
 				},
 				"url": {
 					"raw": "{{url}}/question/1/response",

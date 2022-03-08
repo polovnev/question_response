@@ -1,6 +1,7 @@
 package com.polovnev.question_response.controller;
 
 
+import com.polovnev.question_response.dto.QuestionDto;
 import com.polovnev.question_response.dto.ResponseDto;
 import com.polovnev.question_response.facade.ResponseFacade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,10 @@ public class ResponseController {
     }
 
     @PutMapping("/{responseId}")
-    public void setIsResponseTrue(@PathVariable(name = "responseId") Long responseId) {
-        responseFacade.setIsResponseTrue(responseId);
+    public void setIsResponseTrue(@PathVariable(name = "responseId") Long responseId,
+                                  @PathVariable(name = "questionId") Long questionId,
+                                  @RequestBody QuestionDto questionDto) {
+        responseFacade.setIsResponseTrue(responseId, questionId, questionDto.getAuthorId());
     }
 
 }

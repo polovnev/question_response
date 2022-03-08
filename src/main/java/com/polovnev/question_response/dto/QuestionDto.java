@@ -11,7 +11,7 @@ public class QuestionDto {
     private Long id;
     private Long ratePoints;
     private String text;
-    private Long author;
+    private Long authorId;
     private Long location;
     private Boolean isResponded;
     private LocalDate createdDate;
