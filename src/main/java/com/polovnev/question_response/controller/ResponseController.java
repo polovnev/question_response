@@ -25,4 +25,10 @@ public class ResponseController {
     public List<ResponseDto> findResponsesByQuestionId(@PathVariable(name = "questionId") Long questionId) {
         return responseFacade.findResponsesByQuestionId(questionId);
     }
+
+    @PutMapping("/{responseId}")
+    public void setIsResponseTrue(@PathVariable(name = "responseId") Long responseId) {
+        responseFacade.setIsResponseTrue(responseId);
+    }
+
 }

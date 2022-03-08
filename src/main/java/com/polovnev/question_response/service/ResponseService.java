@@ -2,6 +2,7 @@ package com.polovnev.question_response.service;
 
 import com.polovnev.question_response.entity.Response;
 
+
 import java.util.List;
 
 public interface ResponseService {
@@ -11,5 +12,8 @@ public interface ResponseService {
     void deleteResponse(Long id);
 
     List<Response> findResponsesForQuestion(Long questionId);
+
+    void setIsResponseTrue(Long id);
+
 
 }

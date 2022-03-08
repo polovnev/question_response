@@ -30,4 +30,9 @@ public class ResponseFacade {
         return responseService.findResponsesForQuestion(questionId)
                 .stream().map(responseConverter::entityToDto).collect(toList());
     }
+
+    public void setIsResponseTrue(Long id) {
+        responseService.setIsResponseTrue(id);
+    }
+
 }

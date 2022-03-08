@@ -1,11 +1,11 @@
 package com.polovnev.question_response.service.impl;
 
 import com.polovnev.question_response.dao.ResponseRepository;
-import com.polovnev.question_response.entity.Question;
 import com.polovnev.question_response.entity.Response;
 import com.polovnev.question_response.service.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,5 +28,11 @@ public class ResponseServiceImpl implements ResponseService {
     @Override
     public List<Response> findResponsesForQuestion(Long questionId) {
         return responseRepository.findByQuestion_Id(questionId);
+    }
+
+    @Transactional
+    @Override
+    public void setIsResponseTrue(Long id) {
+        responseRepository.setIsResponseTrue(id);
     }
 }
