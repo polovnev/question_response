@@ -39,7 +39,7 @@ public class ResponseFacade {
     public void setIsResponseTrue(final Long responseId, final Long questionId, final Long userId) {
         boolean isQuestionAssignedToUser = questionService.isQuestionAssignedToUser(questionId, userId);
         if(isQuestionAssignedToUser) {
-            responseService.setIsResponseTrue(responseId, questionId, userId);
+            responseService.setIsResponseTrue(responseId, questionId);
         }
     }
 

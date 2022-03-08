@@ -13,7 +13,7 @@ public interface ResponseService {
 
     List<Response> findResponsesForQuestion(Long questionId);
 
-    void setIsResponseTrue(Long responseId, Long questionId, Long authorId);
+    void setIsResponseTrue(Long responseId, Long questionId);
 
 
 }

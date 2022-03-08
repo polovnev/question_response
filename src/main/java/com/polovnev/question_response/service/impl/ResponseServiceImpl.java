@@ -32,7 +32,7 @@ public class ResponseServiceImpl implements ResponseService {
 
     @Transactional
     @Override
-    public void setIsResponseTrue(Long responseId, Long questionId, Long authorId) {
-        responseRepository.setIsResponseTrue(responseId);
+    public void setIsResponseTrue(Long responseId, Long questionId) {
+        responseRepository.setIsResponseTrue(responseId, questionId);
     }
 }
