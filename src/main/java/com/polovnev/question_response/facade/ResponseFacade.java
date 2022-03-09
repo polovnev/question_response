@@ -1,7 +1,6 @@
 package com.polovnev.question_response.facade;
 
 import com.polovnev.question_response.converter.ResponseConverter;
-import com.polovnev.question_response.dto.QuestionDto;
 import com.polovnev.question_response.dto.ResponseDto;
 import com.polovnev.question_response.entity.Response;
 import com.polovnev.question_response.service.QuestionService;
@@ -36,10 +35,11 @@ public class ResponseFacade {
                 .stream().map(responseConverter::entityToDto).collect(toList());
     }
 
-    public void setIsResponseTrue(final Long responseId, final Long questionId, final String username) {
+    public void setIsResponse(final Long responseId, final Long questionId,
+                              final String username, final boolean isResponse) {
         boolean isQuestionAssignedToUser = questionService.isQuestionAssignedToUser(questionId, username);
         if(isQuestionAssignedToUser) {
-            responseService.setIsResponseTrue(responseId, questionId);
+            responseService.setIsResponse(responseId, questionId, isResponse);
         }
     }
 

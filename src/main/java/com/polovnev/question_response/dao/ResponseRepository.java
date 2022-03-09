@@ -13,9 +13,10 @@ public interface ResponseRepository extends CrudRepository<Response, Long> {
     List<Response> findByQuestion_Id(Long questionId);
 
     @Modifying
-    @Query("UPDATE Response r SET r.isResponse = true " +
+    @Query("UPDATE Response r SET r.isResponse = :isResponse " +
             "WHERE r.id = :id AND r.question.id = :questionId")
-    void setIsResponseTrue(@Param(value = "id") Long id,
-                           @Param(value = "questionId") Long questionId);
+    void setIsResponse(@Param(value = "id") Long id,
+                       @Param(value = "questionId") Long questionId,
+                       @Param(value = "isResponse") boolean isResponse);
 
 }
