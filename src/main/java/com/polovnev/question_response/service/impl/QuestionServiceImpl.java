@@ -3,7 +3,6 @@ package com.polovnev.question_response.service.impl;
 import com.polovnev.question_response.dao.QuestionRepository;
 import com.polovnev.question_response.dto.SearchRequest;
 import com.polovnev.question_response.entity.Question;
-import com.polovnev.question_response.entity.Response;
 import com.polovnev.question_response.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
