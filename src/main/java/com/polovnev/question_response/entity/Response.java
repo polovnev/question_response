@@ -29,7 +29,7 @@ public class Response {
     @Column(name = "is_response")
     private Boolean isResponse;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private Question question;
 

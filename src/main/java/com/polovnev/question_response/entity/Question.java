@@ -9,8 +9,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "question")
-@NamedEntityGraph(name = "question_with_tags_and_responses",
-        attributeNodes = {@NamedAttributeNode("tags"), @NamedAttributeNode("responses")})
 @Builder
 @Data
 @AllArgsConstructor
