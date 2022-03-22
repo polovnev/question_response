@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ResponseServiceImpl implements ResponseService {
@@ -27,12 +28,18 @@ public class ResponseServiceImpl implements ResponseService {
 
     @Override
     public List<Response> findResponsesForQuestion(Long questionId) {
-        return responseRepository.findByQuestion_Id(questionId);
+        return responseRepository.findByQuestion_Id(questionId).stream()
+                .map(this::setQuestionInResponseToNull).collect(Collectors.toList());
     }
 
     @Transactional
     @Override
     public void setIsResponse(Long responseId, Long questionId, boolean isResponse) {
         responseRepository.setIsResponse(responseId, questionId, isResponse);
+    }
+
+    private Response setQuestionInResponseToNull(Response response) {
+        response.setQuestion(null);
+        return response;
     }
 }
