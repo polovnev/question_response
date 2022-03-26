@@ -3,11 +3,13 @@ package com.polovnev.question_response.service.impl;
 import com.polovnev.question_response.dao.QuestionRepository;
 import com.polovnev.question_response.dto.SearchRequest;
 import com.polovnev.question_response.entity.Question;
+import com.polovnev.question_response.entity.Response;
 import com.polovnev.question_response.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,7 +20,11 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question getQuestion(Long id) {
-        return questionRepository.findById(id).get();
+        Optional<Question> questionOptional = questionRepository.findById(id);
+        Question question = questionOptional
+                .orElseThrow(() -> new RuntimeException("Question is not present"));
+        question.getResponses().forEach(this::setQuestionInResponseToNull);
+        return question;
     }
 
     //TODO: implement search by location, tags and text
@@ -53,6 +59,10 @@ public class QuestionServiceImpl implements QuestionService {
     private Question setResponsesInQuestionToNull(Question question) {
         question.setResponses(null);
         return question;
+    }
+
+    private void setQuestionInResponseToNull(Response response) {
+        response.setQuestion(null);
     }
 
 }

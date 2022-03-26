@@ -13,7 +13,7 @@ public interface QuestionRepository extends CrudRepository<Question, Long> {
     //TODO: implement search by location and tags
     List<Question> findByLocation(Long locationId);
 
-    @EntityGraph(value = "question_with_tags_and_responses")
+    @EntityGraph(attributePaths = {"responses", "tags"})
     Optional<Question> findById(Long id);
 
     @Query("SELECT CASE WHEN q.authorId = :username THEN true ELSE false END FROM Question q WHERE q.id = :questionId")
