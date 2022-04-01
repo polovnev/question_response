@@ -30,7 +30,7 @@ public class DaoTestConfig {
                 .authorId("1").location(1L).isResponded(false).createdDate(LocalDate.MIN).build();
         List<Question> questions = Arrays.asList(questionOne, questionTwo);
 
-        Mockito.when(questionRepository.findByLocation(1L)).thenReturn(questions);
+        Mockito.when(questionRepository.findByLocationAndTags(1L,null)).thenReturn(questions);
         Mockito.when(questionRepository.findById(1L)).thenReturn(Optional.of(questionOne));
 
         return questionRepository;

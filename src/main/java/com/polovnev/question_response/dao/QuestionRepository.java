@@ -10,8 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface QuestionRepository extends CrudRepository<Question, Long> {
-    //TODO: implement search by location and tags
-    List<Question> findByLocation(Long locationId);
+    @Query("SELECT q FROM Question q\n" +
+            "INNER JOIN q.tags t\n" +
+            "WHERE q.location=:locationId AND t.id IN (:tags)")
+    List<Question> findByLocationAndTags(@Param(value = "locationId") Long locationId,
+                                         @Param(value = "tags") List<Long> tags);
 
     @EntityGraph(attributePaths = {"responses", "tags"})
     Optional<Question> findById(Long id);

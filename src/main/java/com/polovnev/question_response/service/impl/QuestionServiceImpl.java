@@ -4,12 +4,15 @@ import com.polovnev.question_response.dao.QuestionRepository;
 import com.polovnev.question_response.dto.SearchRequest;
 import com.polovnev.question_response.entity.Question;
 import com.polovnev.question_response.entity.Response;
+import com.polovnev.question_response.entity.Tag;
 import com.polovnev.question_response.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,7 +34,8 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<Question> findQuestionsByRequest(SearchRequest searchRequest) {
         return questionRepository
-                .findByLocation(searchRequest.getLocationId())
+                .findByLocationAndTags(searchRequest.getLocationId(), searchRequest.getTags()
+                        )
                 .stream().map(this::setResponsesInQuestionToNull)
                 .collect(Collectors.toList());
     }
