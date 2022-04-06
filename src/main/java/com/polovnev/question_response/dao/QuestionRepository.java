@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface QuestionRepository extends CrudRepository<Question, Long> {
-    @Query("SELECT q FROM Question q\n" +
+
+    List<Question> findByLocation(Long locationId);
+
+    @Query("SELECT DISTINCT q FROM Question q\n" +
             "INNER JOIN q.tags t\n" +
             "WHERE q.location=:locationId AND t.id IN (:tags)")
     List<Question> findByLocationAndTags(@Param(value = "locationId") Long locationId,

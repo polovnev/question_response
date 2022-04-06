@@ -30,13 +30,19 @@ public class QuestionServiceImpl implements QuestionService {
         return question;
     }
 
-    //TODO: implement search by location, tags and text
     @Override
     public List<Question> findQuestionsByRequest(SearchRequest searchRequest) {
-        return questionRepository
-                .findByLocationAndTags(searchRequest.getLocationId(), searchRequest.getTags()
-                        )
-                .stream().map(this::setResponsesInQuestionToNull)
+        List<Question> questionList;
+        Long locationId = searchRequest.getLocationId();
+        if (searchRequest.getTags().isEmpty()) {
+            questionList = questionRepository.findByLocation(locationId);
+        } else {
+            questionList = questionRepository.findByLocationAndTags(
+                    searchRequest.getLocationId(),
+                    searchRequest.getTags()
+            );
+        }
+        return questionList.stream().map(this::setResponsesInQuestionToNull)
                 .collect(Collectors.toList());
     }
 
